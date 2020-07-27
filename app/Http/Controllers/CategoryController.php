@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -35,8 +34,8 @@ class CategoryController extends Controller
             Category::create($category);
             \Session::flash('success', 'Data berhasil di tambah');
             return redirect()->route('category.index');
-        } catch (Throwable $e) {
-            report($e);
+        } catch (Throwable $th) {
+            report($th);
             return false;
         }
     }
@@ -46,8 +45,8 @@ class CategoryController extends Controller
         try {
             $category = Category::findOrFail($id);
             return view('category.edit', ['category' => $category]);
-        } catch (Throwable $e) {
-            report($e);
+        } catch (Throwable $th) {
+            report($th);
             return false;
         }
     }
@@ -67,8 +66,8 @@ class CategoryController extends Controller
             Category::findOrFail($id)->update($category);
             \Session::flash('success', 'Data berhasil di update');
             return redirect()->route('category.index');
-        } catch (Throwable $e) {
-            report($e);
+        } catch (Throwable $th) {
+            report($th);
             return false;
         }
     }
@@ -77,10 +76,41 @@ class CategoryController extends Controller
     {
         try {
             Category::findOrFail($id)->delete();
-            \Session::flash('success', 'Data berhasil dihapus dan tersimpan di trashed');
+            \Session::flash('success', 'Data tersimpan di trashed');
             return redirect()->route('category.index');
-        } catch (Throwable $e) {
-            report($e);
+        } catch (Throwable $th) {
+            report($th);
+            return false;
+        }
+    }
+
+    public function trashed()
+    {
+
+        $categories = Category::onlyTrashed()->get();
+        return view('category.trashed', ['categories' => $categories]);
+    }
+
+    public function restore($id)
+    {
+        try {
+            Category::withTrashed()->where('id', $id)->first()->restore();
+            \Session::flash('success', 'Data berhasil di restore');
+            return redirect()->route('category.trashed');
+        } catch (Throwable $th) {
+            report($th);
+            return false;
+        }
+    }
+
+    public function kill($id)
+    {
+        try {
+            Category::withTrashed()->where('id', $id)->first()->forceDelete();
+            \Session::flash('success', 'Data berhasil di hapus permanen');
+            return redirect()->route('category.trashed');
+        } catch (Throwable $th) {
+            report($th);
             return false;
         }
     }
