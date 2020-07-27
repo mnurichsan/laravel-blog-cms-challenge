@@ -1,5 +1,5 @@
 @extends('layouts_backend.dashboard')
-@section('title','dashboard')
+@section('title','Dashboard')
 @section('content')
 
 <div class="row">
@@ -13,7 +13,7 @@
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{{asset('assets_backend/img/undraw_posting_photo.svg')}}" alt="">
                 </div>
                 <p> Selamat Datang {{Auth::user()->name}}</p>
-                <a target="_blank" rel="nofollow" href="https://undraw.co/">Create New Post &rarr;</a>
+                <a rel="nofollow" href="{{route('post.create')}}">Create New Post &rarr;</a>
             </div>
         </div>
     </div>

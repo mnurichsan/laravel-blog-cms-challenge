@@ -21,8 +21,7 @@
                         @enderror
                     </div>
                     <div class="text-right">
-                        <button type="reset" class="btn btn-sm btn-danger">Reset</button>
-                        <button class="btn btn-sm btn-primary">Submit</button>
+                        <button class="btn btn-sm btn-primary">Update</button>
                     </div>
                 </form>
             </div>

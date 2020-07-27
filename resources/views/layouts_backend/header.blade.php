@@ -3,10 +3,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('home')}}">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <!-- <i class="fas fa-articel"></i> -->
+        <div class="sidebar-brand-icon">
+            <i class="fab fa-rebel" aria-hidden="true"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Ichsan <sup>Blog</sup></div>
+        <div class="sidebar-brand-text mx-2">Ichsan <sup>Blog</sup></div>
     </a>
 
     <!-- Divider -->
@@ -24,19 +24,19 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Master Data
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-bookmark"></i>
             <span>Categories</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Categories</h6>
-                <a class="collapse-item" href="{{route('category.index')}}">Add New Category</a>
+                <a class="collapse-item" href="{{route('category.index')}}">All Category</a>
                 <a class="collapse-item" href="{{route('category.trashed')}}">Trashed Categories</a>
             </div>
         </div>
@@ -45,14 +45,14 @@
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-book-open"></i>
             <span>Posts</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Posts</h6>
-                <a class="collapse-item" href="utilities-color.html">Add New Post</a>
-                <a class="collapse-item" href="utilities-border.html">Trashed Posts</a>
+                <a class="collapse-item" href="{{route('post.index')}}">All Post</a>
+                <a class="collapse-item" href="{{route('post.trashed')}}">Trashed Posts</a>
             </div>
         </div>
     </li>

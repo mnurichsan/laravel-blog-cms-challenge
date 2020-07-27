@@ -35,8 +35,8 @@
                                     <form action="{{route('category.destroy',$category->id)}}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <a href="{{route('category.edit',$category->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('apakah anda ingin menghapus data')">Delete</button>
+                                        <a href="{{route('category.edit',$category->id)}}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('apakah anda ingin menghapus data')"><i class="fas fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

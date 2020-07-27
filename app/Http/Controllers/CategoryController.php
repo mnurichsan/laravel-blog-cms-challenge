@@ -76,7 +76,7 @@ class CategoryController extends Controller
     {
         try {
             Category::findOrFail($id)->delete();
-            \Session::flash('success', 'Data tersimpan di trashed');
+            \Session::flash('success', 'Data Berhasil di hapus');
             return redirect()->route('category.index');
         } catch (Throwable $th) {
             report($th);

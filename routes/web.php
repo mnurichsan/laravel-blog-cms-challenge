@@ -20,11 +20,11 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    //dashboar utama
+    //dashboard utama
     Route::get('/', 'HomeController@index')->name('home');
     //category
-    Route::post('/category', 'CategoryController@store')->name('category.store');
     Route::get('/category', 'CategoryController@index')->name('category.index');
+    Route::post('/category', 'CategoryController@store')->name('category.store');
     Route::get('/category/create', 'CategoryController@create')->name('category.create');
     Route::get('/category/trashed', 'CategoryController@trashed')->name('category.trashed');
     Route::get('/category/{id}', 'CategoryController@edit')->name('category.edit');
@@ -33,4 +33,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/category/restore/{id}', 'CategoryController@restore')->name('category.restore');
     Route::delete('/category/kill/{id}', 'CategoryController@kill')->name('category.kill');
     //posts
+    Route::get('/post', 'PostController@index')->name('post.index');
+    Route::get('/post/create', 'PostController@create')->name('post.create');
+    Route::post('/post', 'PostController@store')->name('post.store');
+    Route::get('/post/trashed', 'PostController@trashed')->name('post.trashed');
+    Route::get('/post/{id}', 'PostController@edit')->name('post.edit');
+    Route::put('/post/{id}', 'PostController@update')->name('post.update');
+    Route::delete('/post/{id}', 'PostController@destroy')->name('post.destroy');
+    Route::get('/post/restore/{id}', 'PostController@restore')->name('post.restore');
+    Route::delete('/post/kill/{id}', 'PostController@kill')->name('post.kill');
 });
