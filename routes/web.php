@@ -12,9 +12,11 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BlogController@index')->name('blog.index');
+
+Route::get('/{slug}', 'BlogController@post')->name('post.desc');
+
+
 
 
 Auth::routes(['register' => false]);

@@ -26,7 +26,7 @@ class PostController extends Controller
     {
         try {
             $this->validate($request, [
-                'title' => 'required|max:40|min:5',
+                'title' => 'required|max:60|min:5',
                 'id_category' => 'required',
                 'content' => 'required',
                 'image' => 'required|mimes:jpeg,jpg,png',

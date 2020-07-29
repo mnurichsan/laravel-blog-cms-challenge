@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Ichsan Blog - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('assets_backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
