@@ -5,7 +5,7 @@
     <div class="col-lg-6 col-sm-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="{{route('category.index')}}" class="btn btn-sm btn-warning">Back</a>
+                <a href="{{route('category.index')}}" class="btn btn-sm btn-warning"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
             </div>
             <div class="card-body">
                 <form action="{{route('category.store')}}" method="POST">

@@ -6,7 +6,7 @@
     <div class="col-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <a href="{{route('category.create')}}" class="btn btn-sm btn-primary">Tambah Data</a>
+                <a href="{{route('category.create')}}" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success alert-block text-center mt-2">
                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="datatable-basic" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>#</th>

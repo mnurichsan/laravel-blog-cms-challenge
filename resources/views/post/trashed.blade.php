@@ -14,15 +14,15 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="datatable-basic" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Category</th>
-                                <th>Content</th>
-                                <th>Image</th>
                                 <th>Author</th>
+                                <th>Content</th>
+                                <th>Category</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -31,10 +31,10 @@
                             <tr>
                                 <td>{{$key + 1}}</td>
                                 <td>{{Str::words($post->title, $words = 3, $end = '...')}}</td>
-                                <td>{{$post->category->name}}</td>
-                                <td>{!! Str::words($post->content, $words = 3, $end = '..') !!}</td>
-                                <td><img src="{{asset($post->image)}}" alt="" class="img-fluid" width="100px"></td>
                                 <td>{{$post->user->name}}</td>
+                                <td>{!! Str::words($post->content, $words = 3, $end = '..') !!}</td>
+                                <td>{{$post->category->name}}</td>
+                                <td><img src="{{asset($post->image)}}" alt="" class="img-fluid" width="100px"></td>
                                 <td>
                                     <form action="{{route('post.kill',$post->id)}}" method="POST">
                                         @csrf

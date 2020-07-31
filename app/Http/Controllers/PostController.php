@@ -8,12 +8,33 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
+
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = post::orderBy('created_at')->get();
-        return view('post.index', ['posts' => $posts]);
+        if ($request->get('published')) {
+            $posts = post::where('status', 'Published')->get();
+        } elseif ($request->get('draft')) {
+            $posts = post::where('status', 'Draft')->get();
+        } else {
+            $posts = post::latest()->get();
+        }
+
+        //count
+        $postCount = post::latest()->count();
+        $publishedCount = post::where('status', 'Published')->count();
+        $draftCount = post::where('status', 'Draft')->count();
+
+        return view(
+            'post.index',
+            [
+                'posts' => $posts,
+                'publishedCount' => $publishedCount,
+                'draftCount' => $draftCount,
+                'postCount' => $postCount
+            ]
+        );
     }
 
     public function create()
@@ -36,13 +57,20 @@ class PostController extends Controller
             $image = $request->image;
             $new_image = time() . $image->getClientOriginalName();
             $image->move('images/uploads/posts/', $new_image);
+
+            if ($request->get('draft')) {
+                $status = 'Draft';
+            } else {
+                $status = 'Published';
+            }
             $posts = [
                 'title' => $request->title,
                 'slug' => Str::slug($request->title),
                 'id_category' => $request->id_category,
                 'content' => $request->content,
                 'image' => 'images/uploads/posts/' . $new_image,
-                'id_user' => Auth::id()
+                'id_user' => Auth::id(),
+                'status' => $status
             ];
 
             post::create($posts);
@@ -66,11 +94,17 @@ class PostController extends Controller
     {
         try {
             $this->validate($request, [
-                'title' => 'required|max:40|min:5',
+                'title' => 'required|max:60|min:5',
                 'id_category' => 'required',
                 'content' => 'required',
                 'image' => 'mimes:jpeg,jpg,png',
             ]);
+
+            if ($request->get('draft')) {
+                $status = 'Draft';
+            } else {
+                $status = 'Published';
+            }
 
 
             if ($request->has('image')) {
@@ -84,7 +118,8 @@ class PostController extends Controller
                     'id_category' => $request->id_category,
                     'content' => $request->content,
                     'image' => 'images/uploads/posts/' . $new_image,
-                    'id_user' => Auth::id()
+                    'id_user' => Auth::id(),
+                    'status' => $status
                 ];
             } else {
                 $posts = [
@@ -92,7 +127,8 @@ class PostController extends Controller
                     'slug' => Str::slug($request->title),
                     'id_category' => $request->id_category,
                     'content' => $request->content,
-                    'id_user' => Auth::id()
+                    'id_user' => Auth::id(),
+                    'status' => $status
                 ];
             }
 

@@ -14,7 +14,7 @@
 
 Route::get('/', 'BlogController@index')->name('blog.index');
 
-Route::get('/{slug}', 'BlogController@post')->name('post.desc');
+Route::get('/artikel/{slug}', 'BlogController@post')->name('post.desc');
 
 
 
