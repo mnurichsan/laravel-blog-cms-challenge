@@ -13,6 +13,7 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
+        //get data from botton filter
         if ($request->get('published')) {
             $posts = post::where('status', 'Published')->get();
         } elseif ($request->get('draft')) {
@@ -47,8 +48,9 @@ class PostController extends Controller
     {
         try {
             $this->validate($request, [
-                'title' => 'required|max:60|min:5',
+                'title' => 'required|max:100|min:5',
                 'id_category' => 'required',
+                'excerpt' => 'required',
                 'content' => 'required',
                 'image' => 'required|mimes:jpeg,jpg,png',
             ]);
@@ -67,6 +69,7 @@ class PostController extends Controller
                 'title' => $request->title,
                 'slug' => Str::slug($request->title),
                 'id_category' => $request->id_category,
+                'excerpt' => $request->excerpt,
                 'content' => $request->content,
                 'image' => 'images/uploads/posts/' . $new_image,
                 'id_user' => Auth::id(),
@@ -94,8 +97,9 @@ class PostController extends Controller
     {
         try {
             $this->validate($request, [
-                'title' => 'required|max:60|min:5',
+                'title' => 'required|max:100|min:5',
                 'id_category' => 'required',
+                'excerpt' => 'required',
                 'content' => 'required',
                 'image' => 'mimes:jpeg,jpg,png',
             ]);
@@ -116,6 +120,7 @@ class PostController extends Controller
                     'title' => $request->title,
                     'slug' => Str::slug($request->title),
                     'id_category' => $request->id_category,
+                    'excerpt' => $request->excerpt,
                     'content' => $request->content,
                     'image' => 'images/uploads/posts/' . $new_image,
                     'id_user' => Auth::id(),
@@ -126,6 +131,7 @@ class PostController extends Controller
                     'title' => $request->title,
                     'slug' => Str::slug($request->title),
                     'id_category' => $request->id_category,
+                    'excerpt' => $request->excerpt,
                     'content' => $request->content,
                     'id_user' => Auth::id(),
                     'status' => $status

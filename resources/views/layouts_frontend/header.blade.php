@@ -37,25 +37,27 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav">
-                            <li class="nav-item active">
+                            <li class="nav-item ">
                                 <a class="nav-link" href="{{route('blog.index')}}">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="category.html">Category</a>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
+                                <ul class="dropdown-menu">
+                                    @foreach($categories as $category)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('category.post',$category->slug)}}">{{$category->name}}</a>
+                                    </li>
+                                    @endforeach
+                                </ul>
                             </li>
                         </ul>
+
                         <ul class="nav navbar-nav navbar-right header_social ml-auto">
                             <li class="nav-item">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="https://facebook.com/muh.n.ichsan.9"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#"><i class="fa fa-behance"></i></a>
+                                <a target="_blank" href="https://twitter.com/ichsantuy"><i class="fa fa-twitter"></i></a>
                             </li>
                         </ul>
                     </div>

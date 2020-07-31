@@ -20,15 +20,15 @@
                         @enderror
                     </div>
 
-                    <!-- <div class="form-group">
-                        <label>Content</label>
-                        <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="excerpt"></textarea>
-                        @error('content')
+                    <div class="form-group">
+                        <label>excerpt</label>
+                        <textarea class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" id="excerpt"></textarea>
+                        @error('excerpt')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                    </div> -->
+                    </div>
 
                     <div class="form-group">
                         <label>Content</label>

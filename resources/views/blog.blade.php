@@ -29,7 +29,7 @@
             <div class="col-lg-8">
                 <div class="blog_left_sidebar">
                     <div class="row">
-                        @foreach($posts as $post)
+                        @forelse($posts as $post)
                         <div class="col-md-6">
                             <article class="blog_style1 small">
                                 <div class="blog_img">
@@ -38,22 +38,27 @@
                                 <div class="blog_text">
                                     <div class="blog_text_inner">
                                         <div class="cat">
-                                            <a class="cat_btn" href="">{{$post->category->name}}</a>
+                                            <a class="cat_btn" href="{{route('category.post',$post->category->slug)}}">{{$post->category->name}}</a>
                                             <i class="fa fa-calendar" aria-hidden="true"></i>
                                             {{$post->created_at->format('d m Y')}}
+                                            <i class="fa fa-user ml-5" aria-hidden="true"></i>
+                                            {{$post->user->name}}
+
                                         </div>
                                         <a href="{{route('post.desc',$post->slug)}}">
                                             <h4>{{$post->title}}</h4>
                                         </a>
                                         <p>
-                                            {!! Str::words($post->content, $words = 20, $end = '..') !!}
+                                            {!! Str::words($post->excerpt, $words = 20, $end = '..') !!}
                                         </p>
                                         <a class="blog_btn" href="{{route('post.desc',$post->slug)}}">Read More</a>
                                     </div>
                                 </div>
                             </article>
                         </div>
-                        @endforeach
+                        @empty
+                        <h1>No Articel</h1>
+                        @endforelse
                     </div>
                 </div>
             </div>
@@ -72,17 +77,16 @@
                         <div class="br"></div>
                     </aside>
                     <aside class="single_sidebar_widget author_widget">
-                        <img class="author_img img-fluid" src="{{asset('assets_frontend/img/blog/author.png')}}" alt="" />
-                        <h4>Muhammad Nur Ichsan B.</h4>
+                        <img class="author_img img-fluid" src="{{asset('assets_frontend/img/blog/ichsan.jpg')}}" alt="" />
+                        <h4>Ichsan </h4>
                         <p>Web Developer</p>
                         <p>
                             Seorang Developer web yang masih awam.
                         </p>
                         <div class="social_icon">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-github"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
+                            <a target="_blank" href="https://facebook.com/muh.n.ichsan.9"><i class="fa fa-facebook"></i></a>
+                            <a target="_blank" href="https://twitter.com/ichsantuy"><i class="fa fa-twitter"></i></a>
+                            <a target="_blank" href="https://github.com/mnurichsan"><i class="fa fa-github"></i></a>
                         </div>
                         <div class="br"></div>
                     </aside>
@@ -91,7 +95,7 @@
                         <ul class="list cat-list">
                             @foreach($categories as $category)
                             <li>
-                                <a href="#" class="d-flex justify-content-between">
+                                <a href="{{route('category.post',$category->slug)}}" class="d-flex justify-content-between">
                                     <p>{{$category->name}}</p>
                                     <p>{{$category->post_count}}</p>
                                 </a>
@@ -102,7 +106,9 @@
                 </div>
             </div>
         </div>
+        {{$posts->links()}}
     </div>
+
 </section>
 <!--================Blog Area =================-->
 

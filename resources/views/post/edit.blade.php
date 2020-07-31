@@ -22,6 +22,16 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label>excerpt</label>
+                        <textarea class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" id="excerpt">{{$posts->excerpt}}</textarea>
+                        @error('excerpt')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
 
                     <div class="form-group">
                         <label>Content</label>
@@ -98,6 +108,7 @@
 <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('contentid');
+    CKEDITOR.replace('excerpt');
 </script>
 
 @endsection

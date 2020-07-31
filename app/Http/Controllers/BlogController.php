@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\post;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -18,8 +17,15 @@ class BlogController extends Controller
 
     public function post($slug)
     {
-        $post = post::where('slug', $slug)->first();
+        $post = post::where('slug', $slug)->firstorfail();
         $categories = Category::withCount('post')->get();
         return view('artikel', ['post' => $post, 'categories' => $categories]);
+    }
+
+    public function showCategoryPost($slug)
+    {
+        $categoryPost = Category::with('post')->where('slug', $slug)->firstorfail();
+        $categories = Category::withCount('post')->get();
+        return view('category', ['categoryPost' => $categoryPost, 'categories' => $categories]);
     }
 }

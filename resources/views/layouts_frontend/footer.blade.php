@@ -31,10 +31,9 @@
                     <h6 class="footer_title">Follow Us</h6>
                     <p>Let us be social</p>
                     <div class="f_social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                        <a href="#"><i class="fa fa-behance"></i></a>
+                        <a target="_blank" href="https://facebook.com/muh.n.ichsan.9"><i class="fa fa-facebook"></i></a>
+                        <a target="_blank" href="https://twitter.com/ichsantuy"><i class="fa fa-twitter"></i></a>
+                        <a target="_blank" href="https://github.com/mnurichsan"><i class="fa fa-github"></i></a>
                     </div>
                 </div>
             </div>

@@ -1,14 +1,19 @@
 @include('layouts_frontend.header')
+
 <!--================Home Banner Area =================-->
-<section class="banner_area">
+
+<section class="home_banner_area">
     <div class="container">
-        <div class="row banner_inner">
-            <div class="col-lg-12">
-                <div class="banner_content text-center">
-                    <h2>{{$post->title}}</h2>
-                    <div class="page_link">
-                        <a href="{{route('blog.index')}}">Home</a>
-                        <a href="#artikel">Artikel</a>
+        <div class="row">
+            <div class="col-lg-5"></div>
+            <div class="col-lg-7">
+                <div class="blog_text_slider owl-carousel">
+                    <div class="item">
+                        <div class="blog_text">
+                            <a href="#">
+                                <h4>Category - {{$categoryPost->name}}</h4>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -18,40 +23,46 @@
 <!--================End Home Banner Area =================-->
 
 <!--================Blog Area =================-->
-<section class="blog_area p_120 single-post-area" id="artikel">
+
+<section class="blog_area p_120">
     <div class="container">
-        <div class="row">
+
+        <div class="row" id="blog">
             <div class="col-lg-8">
-                <div class="main_blog_details">
-                    <img class="img-fluid" src="{{asset($post->image)}}" alt="" />
-                    <a href="#">
-                        <h4>
-                            {{$post->title}}
-                        </h4>
-                    </a>
-                    <div class="user_details">
-                        <div class="float-left">
-                            <a href="{{route('category.post',$post->category->slug)}}">{{$post->category->name}}</a>
-                        </div>
-                        <div class="float-right">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h5>{{$post->user->name}}</h5>
-                                    <p>{{$post->created_at->format('d m, Y h:i A')}}</p>
+                <div class="blog_left_sidebar">
+                    <div class="row">
+                        @foreach($categoryPost->post as $post)
+                        <div class="col-md-6">
+                            <article class="blog_style1 small">
+                                <div class="blog_img">
+                                    <img class="img-fluid" src="{{asset($post->image)}}" alt="" />
                                 </div>
-                            </div>
+                                <div class="blog_text">
+                                    <div class="blog_text_inner">
+                                        <div class="cat">
+                                            <a class="cat_btn" href="">{{$post->category->name}}</a>
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            {{$post->created_at->format('d m Y')}}
+                                            <i class="fa fa-user ml-5" aria-hidden="true"></i>
+                                            {{$post->user->name}}
+
+                                        </div>
+                                        <a href="{{route('post.desc',$post->slug)}}">
+                                            <h4>{{$post->title}}</h4>
+                                        </a>
+                                        <p>
+                                            {!! Str::words($post->excerpt, $words = 20, $end = '..') !!}
+                                        </p>
+                                        <a class="blog_btn" href="{{route('post.desc',$post->slug)}}">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                    <p>{!! $post->content !!}</p>
-                    <div class="news_d_footer">
-                        <div class="news_socail ml-auto">
-                            <a target="_blank" href="https://facebook.com/muh.n.ichsan.9"><i class="fa fa-facebook"></i></a>
-                            <a target="_blank" href="https://twitter.com/ichsantuy"><i class="fa fa-twitter"></i></a>
-                            <a target="_blank" href="https://github.com/mnurichsan"><i class="fa fa-github"></i></a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
@@ -68,7 +79,7 @@
                     </aside>
                     <aside class="single_sidebar_widget author_widget">
                         <img class="author_img img-fluid" src="{{asset('assets_frontend/img/blog/ichsan.jpg')}}" alt="" />
-                        <h4>Muhammad Nur Ichsan B.</h4>
+                        <h4>Ichsan </h4>
                         <p>Web Developer</p>
                         <p>
                             Seorang Developer web yang masih awam.
@@ -85,7 +96,7 @@
                         <ul class="list cat-list">
                             @foreach($categories as $category)
                             <li>
-                                <a href="{{route('category.post',$category->slug)}}" class="d-flex justify-content-between">
+                                <a href="#" class="d-flex justify-content-between">
                                     <p>{{$category->name}}</p>
                                     <p>{{$category->post_count}}</p>
                                 </a>
@@ -99,5 +110,4 @@
     </div>
 </section>
 <!--================Blog Area =================-->
-
 @include('layouts_frontend.footer')

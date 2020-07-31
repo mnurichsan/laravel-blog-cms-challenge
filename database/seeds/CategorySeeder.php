@@ -13,8 +13,8 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'name' => "Teknologi Terbaru",
-            'slug' => Str::slug('Teknologi Terbaru', '-'),
+            'name' => "web dev",
+            'slug' => Str::slug('web dev', '-'),
         ]);
     }
 }
