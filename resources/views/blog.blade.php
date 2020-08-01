@@ -77,12 +77,13 @@
                         <div class="br"></div>
                     </aside>
                     <aside class="single_sidebar_widget author_widget">
-                        <img class="author_img img-fluid" src="{{asset('assets_frontend/img/blog/ichsan.jpg')}}" alt="" />
+                        <img class="author_img img-fluid" src="{{asset('assets_frontend/img/blog/author.png')}}" alt="" />
                         <h4>Ichsan </h4>
                         <p>Web Developer</p>
                         <p>
                             Seorang Developer web yang masih awam.
                         </p>
+                        <p>Foto di atas itu calon istri saya :)</p>
                         <div class="social_icon">
                             <a target="_blank" href="https://facebook.com/muh.n.ichsan.9"><i class="fa fa-facebook"></i></a>
                             <a target="_blank" href="https://twitter.com/ichsantuy"><i class="fa fa-twitter"></i></a>

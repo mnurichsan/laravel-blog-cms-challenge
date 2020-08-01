@@ -2,33 +2,36 @@
 
 Sistem aplikasi CMS BLOG dengan laravel 6
 
+## Preview Aplikasi
+
+-   View Admin
+
+    ![ichsanblog1](https://user-images.githubusercontent.com/41501730/89091342-2aeda900-d3d3-11ea-92f0-f37f3ba64747.png)
+
+-   View User
+    ![ichsanblog2](https://user-images.githubusercontent.com/41501730/89091372-71db9e80-d3d3-11ea-9871-004fe70eed65.png)
+
+    ![ichsanblog3](https://user-images.githubusercontent.com/41501730/89091378-828c1480-d3d3-11ea-8151-583bf74bfc0e.png)
+
 # Panduan Installasi
 
--   Installasi
-
-*   Clone Repository
+-   Clone Repository
 
     > git clone https://github.com/mnurichsan/laravel-blog-cms-challenge.git atau langsung download zip
 
-*   Install Composer
+-   Install Composer
 
     > Composer install
 
--   Database
-
-*   Setting Database
+-   Setting Database
 
     > Buka .env lalu arahkan database ke lokal masing-masing.
 
--   Migrate
-
-*   Migrasi DB
+-   Migrasi DB
 
     > Buka .env lalu arahkan database ke lokal masing-masing.
 
--   Seeding
-
-*   Seeding User, Category dan posts
+-   Seeding User, Category dan posts
 
     Pastikan jalankan composer dump autoload untuk mengupdate class cache.
 
@@ -38,9 +41,7 @@ Sistem aplikasi CMS BLOG dengan laravel 6
 
     > php artisan db:seed
 
--   Start Server
-
-*   Jalankan mesin MySQL dan start server.
+-   Jalankan mesin MySQL dan start server.
 
     > php artisan serve
 
@@ -50,7 +51,7 @@ Buka http://localhost:8000 untuk melihat Blog
 
 Buka http://localhost:8000/admin untuk melihat CMS Blog
 
--   Berikut untuk login akun admin
+Berikut untuk login akun admin :
 
-*   Email : admin@gmail.com
-*   password : admin
+-   Email : admin@gmail.com
+-   password : admin
